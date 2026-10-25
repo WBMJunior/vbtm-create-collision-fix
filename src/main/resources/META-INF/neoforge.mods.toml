@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="vbtm_collisionfix"
+version="1.0.0"
+displayName="VBTM Create Collision Fix"
+authors="WBMJunior"
+description='''
+Create 6.0.10 crashes with "NullPointerException: Cannot read field "x" because "mf.axis" is null" when an entity
+touches a moving contraption whose collision manifold found no separating axis (Creators-of-Create/Create #10218,
+#10278). 6.0.9 initialised those vectors to Vec3.ZERO; 6.0.10 leaves them null after reset(). This mixin restores
+the 6.0.9 state after construction and after every reset(). Identical jar on client and server.
+'''
+displayTest="IGNORE_ALL_VERSION"
+[[mixins]]
+config="vbtm_collisionfix.mixins.json"
+[[dependencies.vbtm_collisionfix]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.0,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.vbtm_collisionfix]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.vbtm_collisionfix]]
+modId="create"
+type="required"
+versionRange="[6.0.10,6.0.11)"
+ordering="AFTER"
+side="BOTH"
